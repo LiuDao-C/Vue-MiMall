@@ -58,6 +58,7 @@
   import OrderHeader from './../components/OrderHeader'
   import ServiceBar from './../components/ServiceBar'
   import NavFooter from './../components/NavFooter'
+  import { Message } from 'element-ui' 
   export default{
     name:'index',
     components:{
@@ -89,13 +90,13 @@
             selected = item.productSelected;
         if(type == '-'){
           if(quantity == 1){
-            this.$message.warning('商品至少保留一件');
+            Message.warning('商品至少保留一件');
             return;
           }
           --quantity;
         }else if(type == '+'){
           if(quantity > item.productStock){
-            this.$message.warning('购买数量不能超过库存数量');
+            Message.warning('购买数量不能超过库存数量');
             return;
           }
           ++quantity;
@@ -135,7 +136,7 @@
         // 商品都没选中时，返回true
         let isCheck = this.list.every(item=>!item.productSelected);
         if(isCheck){
-          this.$message.warning('请选择一件商品');
+          Message.warning('请选择一件商品');
         }else{
           this.$router.push('/order/confirm');
         }
