@@ -11,5 +11,12 @@ module.exports = {
                 }
             }
         }
+    },
+    // publicPath:'/app',
+    // outputDir:'dest',
+    // productionSourceMap:false,  //隐藏项目源码
+    // 实现路由按需加载
+    chainWebpack: (config) => {
+        config.plugins.delete('prefetch');
     }
 }
